@@ -8,6 +8,7 @@ export const ImageRestaurant = styled.div`
   background-position: center;
   display: flex;
   position: relative;
+  height: 280px;
 
   &::before {
     content: '';

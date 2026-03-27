@@ -19,6 +19,7 @@ export const ProductCard = styled.div`
     font-weight: 400;
     font-size: 14px;
     padding: 8px 0;
+    height: 150px;
   }
 
   h3 {

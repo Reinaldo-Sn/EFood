@@ -10,6 +10,7 @@ type Props = {
   title: string
   rating: number
   id: string
+  destacado: boolean
 }
 
 const RestaurantCard = ({
@@ -19,6 +20,8 @@ const RestaurantCard = ({
   title,
   rating,
   id,
+  destacado
+
 }: Props) => {
   const getDescription = (descricao: string) => {
       if (descricao.length > 280) {
@@ -52,6 +55,7 @@ const RestaurantCard = ({
       </Button>
 
       <Infos>
+        {destacado && <Tag description='Destaque da semana' />}
         <Tag description={infos} />
       </Infos>
     </div>
