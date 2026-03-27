@@ -1,8 +1,6 @@
 import styled from "styled-components"
-import fundoRestaurant from '../../assets/images/trattoria.png'
 
 export const ImageRestaurant = styled.div`
-  background-image: url(${fundoRestaurant});
   height: calc(280px + 176px);
   width: 100%;
   background-repeat: no-repeat;

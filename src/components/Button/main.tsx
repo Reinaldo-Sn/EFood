@@ -1,5 +1,5 @@
-import type { ReactNode } from "react"
-import { ButtonInfo, ButtonLink } from "./styles"
+import type { ReactNode } from 'react'
+import { ButtonInfo, ButtonLink } from './styles'
 
 type Props = {
   type: 'button' | 'link'
@@ -10,9 +10,9 @@ type Props = {
   to?: string
 }
 
-const Button = ({type, children, title, to, onClick, cores}: Props) => {
+const Button = ({ type, children, title, to, onClick, cores }: Props) => {
   if (type === 'button') {
-    return(
+    return (
       <ButtonInfo type="button" title={title} onClick={onClick} cores={cores}>
         {children}
       </ButtonInfo>

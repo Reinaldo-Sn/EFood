@@ -1,11 +1,16 @@
+import type { Restaurante } from "../../models/Restaurant";
 import { Banner, Categoria, ImageRestaurant, Title } from "./styles";
 
-const BannerHeader = () => (
-  <ImageRestaurant>
+type Props = {
+  restaurante: Restaurante
+}
+
+const BannerHeader = ({ restaurante }: Props) => (
+  <ImageRestaurant style={{ backgroundImage: `url(${restaurante.capa})`}}>
     <div className='container'>
       <Banner>
-        <Categoria>Italiana</Categoria>
-        <Title>La Dolce Vita Trattoria</Title>
+        <Categoria>{restaurante.tipo}</Categoria>
+        <Title>{restaurante.titulo}</Title>
       </Banner>
     </div>
   </ImageRestaurant>

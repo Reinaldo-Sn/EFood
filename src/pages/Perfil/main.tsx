@@ -1,57 +1,34 @@
-import BannerHeader from "../../components/Banner/main";
-import Footer from "../../components/Footer/main";
-import HeaderPerfil from "../../components/HeaderPerfil/main";
-import Products from "../../models/Products";
-import marguerita from "../../assets/images/marguerita.png"
-import ProductList from "../../components/ProductList/main";
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 
-const products: Products[] = [
-  {
-    id: 1,
-    title: 'Pizza Marguerita',
-    description: 'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    image: marguerita
-  },
-  {
-    id: 2,
-    title: 'Pizza Marguerita',
-    description: 'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    image: marguerita
-  },
-  {
-    id: 3,
-    title: 'Pizza Marguerita',
-    description: 'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    image: marguerita
-  },
-  {
-    id: 4,
-    title: 'Pizza Marguerita',
-    description: 'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    image: marguerita
-  },
-  {
-    id: 5,
-    title: 'Pizza Marguerita',
-    description: 'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    image: marguerita
-  },
-  {
-    id: 6,
-    title: 'Pizza Marguerita',
-    description: 'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    image: marguerita
-  }
-]
+import BannerHeader from '../../components/Banner/main'
+import HeaderPerfil from '../../components/HeaderPerfil/main'
+import ProductList from '../../components/ProductList/main'
+import type { Restaurante } from '../../models/Restaurant'
 
-const Perfil = () => (
+const Perfil = () => {
+  const { id } = useParams()
+
+  const [restaurante, setRestaurante] = useState<Restaurante | null>(null)
+
+  useEffect(() => {
+    fetch(`https://api-ebac.vercel.app/api/efood/restaurantes`)
+    .then(res => res.json())
+    .then((res: Restaurante[]) => {
+      const encontrado = res.find(r => r.id === Number(id))
+      setRestaurante(encontrado ?? null)
+    })
+  }, [id])
+
+  if (!restaurante) return <p>Carregando...</p>
+
+  return (
   <>
     <HeaderPerfil />
-    <BannerHeader />
-    <ProductList products={products} />
-    <Footer />
+    <BannerHeader restaurante={restaurante} />
+    <ProductList cardapio={restaurante.cardapio} />
   </>
-
 )
+}
 
 export default Perfil

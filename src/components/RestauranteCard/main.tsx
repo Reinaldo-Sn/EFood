@@ -6,9 +6,10 @@ import Button from '../Button/main'
 type Props = {
   description: string
   image: string
-  infos: string[]
+  infos: string
   title: string
   rating: number
+  id: string
 }
 
 const RestaurantCard = ({
@@ -17,7 +18,16 @@ const RestaurantCard = ({
   infos,
   title,
   rating,
-}: Props) => (
+  id,
+}: Props) => {
+  const getDescription = (descricao: string) => {
+      if (descricao.length > 280) {
+        return descricao.slice(0, 277) + '...'
+      }
+      return descricao
+    }
+
+  return (
   <Card>
     <img src={image} alt={title} />
 
@@ -30,19 +40,23 @@ const RestaurantCard = ({
         </span>
       </TitleSection>
 
-      <Descricao>{description}</Descricao>
+      <Descricao>{getDescription(description)}</Descricao>
 
-      <Button cores="secondary" type={'link'} to="/perfil" title={'Saiba mais'}>
+      <Button
+        cores="secondary"
+        type={'link'}
+        to={`/perfil/${id}`}
+        title={'Saiba mais'}
+      >
         Saiba mais
       </Button>
 
       <Infos>
-        {infos.map((item) => (
-          <Tag key={item} description={item} />
-        ))}
+        <Tag description={infos} />
       </Infos>
     </div>
   </Card>
 )
+}
 
 export default RestaurantCard
