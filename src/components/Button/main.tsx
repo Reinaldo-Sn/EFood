@@ -13,14 +13,14 @@ type Props = {
 const Button = ({ type, children, title, to, onClick, cores }: Props) => {
   if (type === 'button') {
     return (
-      <ButtonInfo type="button" title={title} onClick={onClick} cores={cores}>
+      <ButtonInfo type="button" title={title} onClick={onClick} $cores={cores}>
         {children}
       </ButtonInfo>
     )
   }
 
   return (
-    <ButtonLink to={to as string} title={title} cores={cores}>
+    <ButtonLink to={to as string} title={title} $cores={cores}>
       {children}
     </ButtonLink>
   )
