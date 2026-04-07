@@ -1,19 +1,18 @@
-import type { Restaurante } from "../../models/Restaurant";
-import { Banner, Categoria, ImageRestaurant, Title } from "./styles";
+import * as S from './styles'
 
 type Props = {
   restaurante: Restaurante
 }
 
 const BannerHeader = ({ restaurante }: Props) => (
-  <ImageRestaurant style={{ backgroundImage: `url(${restaurante.capa})`}}>
-    <div className='container'>
-      <Banner>
-        <Categoria>{restaurante.tipo}</Categoria>
-        <Title>{restaurante.titulo}</Title>
-      </Banner>
+  <S.ImageRestaurant style={{ backgroundImage: `url(${restaurante.capa})` }}>
+    <div className="container">
+      <S.Banner>
+        <S.Categoria>{restaurante.tipo}</S.Categoria>
+        <S.Title>{restaurante.titulo}</S.Title>
+      </S.Banner>
     </div>
-  </ImageRestaurant>
+  </S.ImageRestaurant>
 )
 
 export default BannerHeader

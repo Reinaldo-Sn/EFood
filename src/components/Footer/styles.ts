@@ -1,10 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const FooterContainer = styled.footer`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #FFEBD9;
+  background-color: #ffebd9;
   text-align: center;
   padding: 40px;
 `

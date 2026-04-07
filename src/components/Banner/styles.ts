@@ -1,7 +1,6 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 export const ImageRestaurant = styled.div`
-  height: calc(280px + 176px);
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;

@@ -1,12 +1,12 @@
 import styled from 'styled-components'
-import { Cores } from '../../styles'
+import { colors } from '../../styles'
 
 export const TagDestaque = styled.div`
-  background-color: ${Cores.laranja};
+  background-color: ${colors.orange};
   font-family: Roboto, sans-serif;
   font-weight: bold;
   text-align: center;
   font-size: 12px;
-  color: ${Cores.branca};
+  color: ${colors.white};
   padding: 6px;
 `

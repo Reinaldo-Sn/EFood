@@ -1,34 +1,25 @@
-import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import BannerHeader from '../../components/Banner/main'
 import HeaderPerfil from '../../components/HeaderPerfil/main'
 import ProductList from '../../components/ProductList/main'
-import type { Restaurante } from '../../models/Restaurant'
+import { useGetRestaurantQuery } from '../../services/api'
+import { BeatLoader } from 'react-spinners'
 
 const Perfil = () => {
   const { id } = useParams()
+  const { data: restaurante, isError, isLoading } = useGetRestaurantQuery(Number(id))
 
-  const [restaurante, setRestaurante] = useState<Restaurante | null>(null)
-
-  useEffect(() => {
-    fetch(`https://api-ebac.vercel.app/api/efood/restaurantes`)
-    .then(res => res.json())
-    .then((res: Restaurante[]) => {
-      const encontrado = res.find(r => r.id === Number(id))
-      setRestaurante(encontrado ?? null)
-    })
-  }, [id])
-
-  if (!restaurante) return <p>Carregando...</p>
+  if (isLoading) return <BeatLoader />
+  if (isError || !restaurante) return <p>Erro ao carregar restaurante.</p>
 
   return (
-  <>
-    <HeaderPerfil />
-    <BannerHeader restaurante={restaurante} />
-    <ProductList cardapio={restaurante.cardapio} />
-  </>
-)
+    <>
+      <HeaderPerfil />
+      <BannerHeader restaurante={restaurante} />
+      <ProductList cardapio={restaurante.cardapio} />
+    </>
+  )
 }
 
 export default Perfil

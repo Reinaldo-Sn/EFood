@@ -1,15 +1,16 @@
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import { Cores } from "../../styles";
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+import { colors } from '../../styles'
 
 type Props = {
-  $cores: 'primary' | 'secondary'
+  $variant: 'primary' | 'secondary'
 }
 
 export const ButtonInfo = styled.button<Props>`
-
-  background-color: ${((props) => props.$cores === 'primary' ? Cores.branca : Cores.laranja)};
-  color: ${((props) => props.$cores === 'primary' ? Cores.laranja : Cores.branca)};
+  background-color: ${(props) =>
+    props.$variant === 'primary' ? colors.white : colors.orange};
+  color: ${(props) =>
+    props.$variant === 'primary' ? colors.orange : colors.white};
 
   display: inline-block;
   font-family: Roboto, sans-serif;
@@ -22,8 +23,10 @@ export const ButtonInfo = styled.button<Props>`
 `
 
 export const ButtonLink = styled(Link)<Props>`
-  background-color: ${((props) => props.$cores === 'primary' ? Cores.branca : Cores.laranja)};
-  color: ${((props) => props.$cores === 'primary' ? Cores.laranja : Cores.branca)};
+  background-color: ${(props) =>
+    props.$variant === 'primary' ? colors.white : colors.orange};
+  color: ${(props) =>
+    props.$variant === 'primary' ? colors.orange : colors.white};
   display: inline-block;
   font-family: Roboto, sans-serif;
   font-weight: bold;

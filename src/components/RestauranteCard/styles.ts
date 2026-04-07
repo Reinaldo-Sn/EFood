@@ -1,15 +1,15 @@
 import styled from 'styled-components'
-import { Cores } from '../../styles'
+import { colors } from '../../styles'
 
 export const Card = styled.div`
   background-color: #fff;
-  border: 1px solid ${Cores.laranja};
-  color: ${Cores.laranja};
+  border: 1px solid ${colors.orange};
+  color: ${colors.orange};
   position: relative;
-   overflow: hidden;
+  overflow: hidden;
 
   > img {
-    height:220px;
+    height: 220px;
     object-fit: cover;
   }
 
@@ -43,7 +43,6 @@ export const TitleSection = styled.div`
 
 export const Descricao = styled.p`
   font-size: 14px;
-  line-height: 22px;
   display: block;
   line-height: 22px;
   font-family: Roboto, sans-serif;

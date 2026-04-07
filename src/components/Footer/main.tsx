@@ -1,8 +1,8 @@
+import { FooterContainer, Logo, Sobre, SocialLinks } from './styles'
 import instagram from '../../assets/images/instagram.png'
 import facebook from '../../assets/images/facebook.png'
-import twiter from '../../assets/images/twitter.png'
+import twitter from '../../assets/images/twitter.png'
 import logo from '../../assets/images/logo.png'
-import { FooterContainer, Logo, Sobre, SocialLinks } from './styles'
 
 const Footer = () => (
   <FooterContainer>
@@ -10,10 +10,12 @@ const Footer = () => (
     <SocialLinks>
       <img src={instagram} alt="instagram" />
       <img src={facebook} alt="facebook" />
-      <img src={twiter} alt="twitter" />
+      <img src={twitter} alt="twitter" />
     </SocialLinks>
     <Sobre>
-      A efood é uma plataforma para divulgação de estabelecimentos, a responsabilidade pela entrega, qualidade dos produtos é toda do estabelecimento contratado.
+      A efood é uma plataforma para divulgação de estabelecimentos, a
+      responsabilidade pela entrega, qualidade dos produtos é toda do
+      estabelecimento contratado.
     </Sobre>
   </FooterContainer>
 )

@@ -1,27 +1,29 @@
 import { createGlobalStyle } from 'styled-components'
 
-export const Cores = {
-  laranja: '#E66767',
-  branca: '#FFEBD9',
+export const colors = {
+  orange: '#E66767',
+  white: '#FFEBD9',
+  green: '#00ff08',
+  red: '#ff1100',
 }
 
 export const GlobalCss = createGlobalStyle`
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        list-style: none;
-        color: ${Cores.laranja}
-    }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    color: ${colors.orange}
+  }
 
-    body {
-      background-color: #FFF8F2;
-      font-family: Roboto, sans-serif;
-    }
+  body {
+    background-color: #FFF8F2;
+    font-family: Roboto, sans-serif;
+  }
 
-    .container {
-        max-width: 1024px;
-        width: 100%;
-        margin: 0 auto;
-    }
+  .container {
+    max-width: 1024px;
+    width: 100%;
+    margin: 0 auto;
+  }
 `

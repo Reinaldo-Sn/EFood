@@ -1,22 +1,18 @@
-import { useEffect, useState } from 'react'
-
+import { BeatLoader } from 'react-spinners'
 import Hero from '../../components/Hero/main'
 import RestaurantList from '../../components/RestauranteList/main'
-import type { Restaurante } from '../../models/Restaurant'
+import { useGetAllRestaurantsQuery } from '../../services/api'
 
 const Home = () => {
-  const [restaurant, setRestaurant] = useState<Restaurante[]>([])
+  const { data: restaurant, isError, isLoading } = useGetAllRestaurantsQuery()
 
-  useEffect(() => {
-    fetch('https://api-ebac.vercel.app/api/efood/restaurantes')
-      .then((res) => res.json())
-      .then((res) => setRestaurant(res))
-  }, [])
+  if (isLoading) return <BeatLoader />
+  if (isError || !restaurant) return <p>Erro ao carregar restaurantes.</p>
 
   return (
     <>
       <Hero />
-      <RestaurantList restaurante={restaurant} />
+      <RestaurantList restaurante={restaurant ?? []} />
     </>
   )
 }

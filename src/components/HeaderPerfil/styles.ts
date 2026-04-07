@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 import fundo from '../../assets/images/fundo.png'
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom'
 
 export const Image = styled.div`
   background-image: url(${fundo});
@@ -12,6 +12,12 @@ export const HeaderInfo = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  span {
+    cursor: pointer;
+    font-weight: 900;
+    font-size: 18px;
+  }
 `
 
 export const LinkHome = styled(Link)`

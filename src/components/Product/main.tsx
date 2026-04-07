@@ -1,55 +1,87 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
+import type { RootState } from '../../store'
+import { add } from '../../store/reducers/cart'
+import { formataPreco } from '../../utils/format'
 import Button from '../Button/main'
-import { ModalCard, ModalContent, ModalInfos, ProductCard } from './styles'
+import Loader from '../Loader/main'
+
+import { ProductCard } from './styles'
+import { ModalCard, ModalContent, ModalInfos } from '../Modal/styles'
+
 import close from '../../assets/images/close.png'
 
 type Props = {
-  image: string
-  title: string
-  description: string
-  preco: number
-  porcao: string
+  product: Cardapio
+  isVisible: boolean
+  onClose: () => void
+  onOpen: () => void
 }
 
-const formataPreco = (preco = 0) => {
-  return new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL'
-  }).format(preco)
-}
+const Product = ({ product, onClose, onOpen, isVisible = false }: Props) => {
+  const dispatch = useDispatch()
+  const cartItems = useSelector((state: RootState) => state.cart.items)
+  const [loaderStatus, setLoaderStatus] = useState<'success' | 'error' | null>(null)
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
-const Product = ({ image, description, title, preco, porcao }: Props) => {
-  const [isVisible, setIsVisible] = useState(false)
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current)
+    }
+  }, [])
+
+  const addItem = () => {
+    const alreadyInCart = cartItems.some((item) => item.id === product.id)
+    const status = alreadyInCart ? 'error' : 'success'
+    setLoaderStatus(status)
+    timerRef.current = setTimeout(() => {
+      if (!alreadyInCart) {
+        dispatch(add(product))
+        onClose()
+      }
+      setLoaderStatus(null)
+    }, 2000)
+  }
 
   return (
-  <>
-    <ProductCard>
-      <img src={image} alt={title} />
-      <h3>{title}</h3>
-      <p>{description}</p>
-      <Button cores="primary" type={'button'} title={'carinho'} onClick={() => setIsVisible(true)}>
-        Adicionar ao carrinho
-      </Button>
-    </ProductCard>
+    <>
+      {loaderStatus && <Loader status={loaderStatus} />}
+      <ProductCard>
+        <img src={product.foto} alt={product.nome} />
+        <h3>{product.nome}</h3>
+        <p>{product.descricao}</p>
+        <Button
+          variant="primary"
+          type={'button'}
+          title={'mais detalhes do prato'}
+          onClick={onOpen}
+        >
+          Mais detalhes
+        </Button>
+      </ProductCard>
 
-    <ModalCard className={isVisible ? 'visivel' : ''}>
-      <ModalContent className="container">
-        <img src={image} alt={title} />
-        <ModalInfos>
-          <h3>{title}</h3>
-          <p>
-            {description}
-          </p>
-          <p>Serve: de {porcao}</p>
-          <Button type={'button'} cores={'primary'} title={''}>
-            Adicionar ao carrinho - R$ {formataPreco(preco)}
-          </Button>
-        </ModalInfos>
-        <img src={close} alt="fechar a modal" onClick={() => setIsVisible(false)}/>
-      </ModalContent>
-      <div className="overlay" onClick={() => {setIsVisible(false)}}></div>
-    </ModalCard>
-  </>
+      <ModalCard className={isVisible ? 'visivel' : ''}>
+        <ModalContent className="container">
+          <img src={product.foto} alt={product.nome} />
+          <ModalInfos>
+            <h3>{product.nome}</h3>
+            <p>{product.descricao}</p>
+            <p>Serve: de {product.porcao}</p>
+            <Button
+              type={'button'}
+              variant={'primary'}
+              title={''}
+              onClick={addItem}
+            >
+              Adicionar ao carrinho - {formataPreco(product.preco)}
+            </Button>
+          </ModalInfos>
+          <img src={close} alt="fechar a modal" onClick={onClose} />
+        </ModalContent>
+        <div className="overlay" onClick={onClose}></div>
+      </ModalCard>
+    </>
   )
 }
 

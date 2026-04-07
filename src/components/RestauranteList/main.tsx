@@ -1,5 +1,5 @@
-import type { Restaurante } from '../../models/Restaurant'
 import RestaurantCard from '../RestauranteCard/main'
+
 import { List } from './styles'
 
 export type Props = {

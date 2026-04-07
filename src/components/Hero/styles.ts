@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Cores } from '../../styles'
+import { colors } from '../../styles'
 
 export const Imagem = styled.div`
   width: 100%;
@@ -20,7 +20,7 @@ export const Imagem = styled.div`
     width: 540px;
     height: 80px;
     font-size: 36px;
-    color: ${Cores.laranja};
+    color: ${colors.orange};
     font-weight: 900;
     font-family: Roboto, sans-serif;
   }

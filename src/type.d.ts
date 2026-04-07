@@ -1,4 +1,4 @@
-export type Cardapio = {
+declare type Cardapio = {
   foto: string
   preco: number
   id: number
@@ -7,7 +7,7 @@ export type Cardapio = {
   porcao: string
 }
 
-export type Restaurante = {
+declare type Restaurante = {
   id: number
   titulo: string
   tipo: string
@@ -15,5 +15,5 @@ export type Restaurante = {
   descricao: string
   capa: string
   destacado: boolean
-  cardapio: []
+  cardapio: Cardapio[]
 }
