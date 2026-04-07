@@ -1,75 +1,46 @@
-# React + TypeScript + Vite
+# E-Food
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação de e-commerce de delivery de comida, desenvolvida com React, TypeScript e Redux Toolkit.
 
-Currently, two official plugins are available:
+## Tecnologias
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- [React 19](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vite.dev/)
+- [Redux Toolkit](https://redux-toolkit.js.org/) — gerenciamento de estado global
+- [React Router DOM](https://reactrouter.com/) — roteamento
+- [Styled Components](https://styled-components.com/) — estilização
 
-## React Compiler
+## Funcionalidades
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- Listagem de restaurantes e produtos
+- Carrinho de compras com gerenciamento via Redux
+- Página de perfil
+- Integração com API externa
 
-Note: This will impact Vite dev & build performances.
+## Como rodar
 
-## Expanding the ESLint configuration
+```bash
+# Instalar dependências
+npm install
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+# Iniciar em modo desenvolvimento
+npm run dev
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Build para produção
+npm run build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Estrutura do projeto
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── assets/         # Imagens e arquivos estáticos
+├── components/     # Componentes reutilizáveis (Cart, Modal, Loader, etc.)
+├── pages/          # Páginas da aplicação (Home, Perfil)
+├── services/       # Chamadas à API
+├── store/          # Configuração do Redux (store e slices)
+├── utils/          # Funções utilitárias
+├── routes.tsx      # Definição de rotas
+└── App.tsx         # Componente raiz
 ```
