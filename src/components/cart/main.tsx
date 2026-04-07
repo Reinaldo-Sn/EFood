@@ -52,7 +52,7 @@ const Cart = () => {
             <p>{formataPreco(getAllPrice())}</p>
           </div>
           <Button
-            type={'button'}
+            type={'link'}
             variant={'primary'}
             title={'clique aqui para continuar com a entrega'}
           >
