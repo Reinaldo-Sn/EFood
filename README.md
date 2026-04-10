@@ -10,13 +10,20 @@ Aplicação de e-commerce de delivery de comida, desenvolvida com React, TypeScr
 - [Redux Toolkit](https://redux-toolkit.js.org/) — gerenciamento de estado global
 - [React Router DOM](https://reactrouter.com/) — roteamento
 - [Styled Components](https://styled-components.com/) — estilização
+- [Formik](https://formik.org/) — gerenciamento de formulários
+- [Yup](https://github.com/jquense/yup) — validação de campos
+- [react-imask](https://imask.js.org/) — máscaras de input
 
 ## Funcionalidades
 
-- Listagem de restaurantes e produtos
+- Listagem de restaurantes e cardápios
 - Carrinho de compras com gerenciamento via Redux
-- Página de perfil
-- Integração com API externa
+- Fluxo de checkout completo: entrega → pagamento → confirmação
+- Validação de formulários com borda vermelha em campos inválidos
+- Máscaras nos campos de CEP, número do cartão, CVV, mês e ano
+- Envio do pedido para API externa com exibição do ID do pedido
+- Página de perfil do restaurante
+- Layout responsivo para mobile e tablet
 
 ## Como rodar
 
@@ -36,11 +43,17 @@ npm run build
 ```
 src/
 ├── assets/         # Imagens e arquivos estáticos
-├── components/     # Componentes reutilizáveis (Cart, Modal, Loader, etc.)
+├── components/     # Componentes reutilizáveis
+│   ├── Cart/       # Carrinho de compras
+│   ├── Checkout/   # Fluxo de checkout (Delivery, Payment, Confirmation)
+│   ├── Modal/      # Modal de detalhes do produto
+│   ├── Loader/     # Feedback visual de ação
+│   └── ...
 ├── pages/          # Páginas da aplicação (Home, Perfil)
-├── services/       # Chamadas à API
-├── store/          # Configuração do Redux (store e slices)
-├── utils/          # Funções utilitárias
+├── services/       # Chamadas à API via RTK Query
+├── store/          # Configuração do Redux
+│   └── reducers/   # Slices (cart, checkout)
+├── utils/          # Funções utilitárias (formatação de preço, cálculo de total)
 ├── routes.tsx      # Definição de rotas
 └── App.tsx         # Componente raiz
 ```
