@@ -18,10 +18,16 @@ export const Imagem = styled.div`
   h1 {
     padding-top: 136px;
     width: 540px;
-    height: 80px;
+    max-width: 100%;
     font-size: 36px;
     color: ${colors.orange};
     font-weight: 900;
     font-family: Roboto, sans-serif;
+
+    @media (max-width: 768px) {
+      font-size: 24px;
+      padding-top: 80px;
+      width: 100%;
+    }
   }
 `

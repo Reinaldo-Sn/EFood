@@ -27,6 +27,7 @@ export const SocialLinks = styled.span`
 
 export const Sobre = styled.h5`
   width: 480px;
+  max-width: 100%;
   font-weight: 400;
   font-size: 10px;
 `

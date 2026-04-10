@@ -4,11 +4,13 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 type CartState = {
   items: Cardapio[]
   isOpen: boolean
+  currentStep: 'cart' | 'checkout'
 }
 
 const initialState: CartState = {
   items: [],
   isOpen: false,
+  currentStep: 'cart',
 }
 
 const cartSlice = createSlice({
@@ -30,9 +32,15 @@ const cartSlice = createSlice({
     close: (state) => {
       state.isOpen = false
     },
+    changeStep: (state, action: PayloadAction<'cart' | 'checkout'>) => {
+      state.currentStep = action.payload
+    },
+    clearCart: (state) => {
+      state.items = []
+    },
   },
 })
 
-export const { add, remove, open, close } = cartSlice.actions
+export const { add, remove, open, close, changeStep, clearCart } = cartSlice.actions
 
 export default cartSlice.reducer

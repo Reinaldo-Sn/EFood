@@ -10,4 +10,11 @@ export const List = styled.ul`
   li {
     margin-bottom: 48px;
   }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 `

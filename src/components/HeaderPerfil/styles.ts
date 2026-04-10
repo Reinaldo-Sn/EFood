@@ -6,6 +6,10 @@ export const Image = styled.div`
   background-image: url(${fundo});
   height: 176px;
   padding: 64px;
+
+  @media (max-width: 768px) {
+    padding: 20px;
+  }
 `
 
 export const HeaderInfo = styled.header`
@@ -17,6 +21,11 @@ export const HeaderInfo = styled.header`
     cursor: pointer;
     font-weight: 900;
     font-size: 18px;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 16px;
   }
 `
 

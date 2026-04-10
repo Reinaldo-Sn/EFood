@@ -4,3 +4,6 @@ export const formataPreco = (preco = 0) => {
     currency: 'BRL',
   }).format(preco)
 }
+
+export const getTotalPrice = (items: Cardapio[]) =>
+  items.reduce((acc, item) => acc + item.preco, 0)

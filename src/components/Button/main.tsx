@@ -3,7 +3,7 @@ import type { ReactNode } from 'react'
 import { ButtonInfo, ButtonLink } from './styles'
 
 type Props = {
-  type: 'button' | 'link'
+  type: 'button' | 'submit' | 'link'
   variant: 'primary' | 'secondary'
   title: string
   children: ReactNode
@@ -12,9 +12,9 @@ type Props = {
 }
 
 const Button = ({ type, children, title, to, onClick, variant }: Props) => {
-  if (type === 'button') {
+  if (type === 'button' || type === 'submit') {
     return (
-      <ButtonInfo type="button" title={title} onClick={onClick} $variant={variant}>
+      <ButtonInfo type={type} title={title} onClick={onClick} $variant={variant}>
         {children}
       </ButtonInfo>
     )

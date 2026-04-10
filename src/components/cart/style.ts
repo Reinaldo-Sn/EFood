@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { colors } from '../../styles'
-import { ButtonLink } from '../Button/styles'
+import { ButtonInfo } from '../Button/styles'
 
 export const Overlay = styled.div`
   position: fixed;
@@ -32,6 +32,16 @@ export const Sidebar = styled.div`
 
 export const CartItems = styled.ul`
   padding-top: 16px;
+
+  > p {
+    color: ${colors.white};
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 24px;
+    padding: 0 16px;
+    line-height: 22px;
+  }
 `
 
 export const CartItem = styled.li`
@@ -92,7 +102,7 @@ export const SaleSection = styled.div`
     }
   }
 
-  ${ButtonLink} {
+  ${ButtonInfo} {
     width: 100%;
     margin-top: 16px;
   }

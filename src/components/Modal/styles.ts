@@ -32,6 +32,7 @@ export const ModalContent = styled.div`
   background-color: ${colors.orange};
   z-index: 1;
   position: relative;
+  max-width: min(984px, calc(100% - 40px));
 
   img:last-child {
     height: 16px;
@@ -46,6 +47,14 @@ export const ModalContent = styled.div`
     height: 280px;
     width: 100%;
     object-fit: cover;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+
+    img {
+      height: 200px;
+    }
   }
 `
 

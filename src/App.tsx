@@ -1,15 +1,18 @@
+import { useSelector } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 
+import type { RootState } from './store'
 import Rotas from './routes'
-import Footer from './components/Footer/main'
-import Cart from './components/cart/main'
+import Cart from './components/Cart/main'
+import Checkout from './components/Checkout/main'
 
 function App() {
+  const { currentStep } = useSelector((state: RootState) => state.cart)
+
   return (
     <BrowserRouter>
-      <Cart />
+      {currentStep === 'cart' ? <Cart /> : <Checkout />}
       <Rotas />
-      <Footer />
     </BrowserRouter>
   )
 }
